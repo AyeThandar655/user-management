@@ -1,0 +1,160 @@
+.title {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.table {
+  overflow: hidden;
+  border-collapse: collapse;
+  box-shadow: 0px 10px 10px #ccc;
+  border-radius: 10px;
+  width: 90%;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.table thead {
+  background-color: #ccc;
+  color: #222;
+}
+
+.table th {
+  text-align: left;
+}
+
+.table th,
+.table td {
+  padding: 0.8rem;
+}
+
+.table td {
+  border-top: 0.5px solid #ddd;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.table tbody tr:hover {
+  background-color: #eee;
+}
+
+.label {
+  border-radius: 3px;
+  padding: 0.3rem;
+  color: white;
+}
+
+.actions {
+  display: flex;
+  margin-left: 0;
+}
+
+.actions svg {
+  cursor: pointer;
+}
+
+
+.edit-btn {
+  color: #4211f1;
+  margin-right: 15px;
+}
+
+
+.delete-btn {
+  color: #e10d05;
+}
+
+.modal-container {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  border-radius: 5px;
+  padding: 2rem;
+  background-color: white;
+  width: 25em;
+}
+
+.modalTitle {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.modal .btn {
+  display: block;
+  margin: auto;
+  border: none;
+  background: cornflowerblue;
+  color: white;
+  padding: 10px 30px !important;
+  font-size: 18px !important;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+}
+
+.form-group input {
+  border: 1px solid #333;
+    border-radius: 5px;
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+.form-group label {
+  margin-bottom: 10px;
+}
+
+.error {
+  background-color: #f8d7da;
+  color: #df4759;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  margin-bottom: 1rem;
+}
+
+.delete-confirmation-modal {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 50px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  text-align: center;
+}
+
+.delete-confirmation-modal p {
+  margin-bottom: 35px;
+}
+
+.delete-confirmation-modal button {
+  padding: 7px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.delete-confirmation-modal button:first-child {
+  background-color: #ccc;
+  color: white;
+}
+
+.delete-confirmation-modal button:last-child {
+  background-color: #ff3b3b;
+  color: white;
+}

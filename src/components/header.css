@@ -1,0 +1,12 @@
+.headerContainer {
+    padding: 20px 40px 20px 20px;
+    background-color: #060125;
+    text-align: right;
+}
+  
+.headerLink {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+  
