@@ -1,6 +1,5 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes, Link, useNavigate } from 'react-router-dom';
 import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
-import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import Home from './Pages/Home/home';
 import Login from './Pages/Login/login';
@@ -12,6 +11,7 @@ import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
   const updateLoginStatus = (status, role) => {
     setIsLoggedIn(status);
@@ -23,19 +23,24 @@ function App() {
     setIsLoggedIn(JSON.parse(storedStatus));
   }, []);
 
+  useEffect(() => {
+    if(isLoggedIn){
+      navigate('/home');
+    }
+  }, [isLoggedIn, navigate]);
+
   const handleLogout = () => {
     setIsLoggedIn(false);
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('userData');
-    window.location.href = '/';
+    navigate('/');
   };
 
 
   return (
-    <BrowserRouter>
       <div id="app" style={{ height: '100vh', display: 'flex' }}>
         <Sidebar
-          style={{ height: '100vh', display: isLoggedIn ? 'initial' : 'none' }}
+          style={{ height: '100vh', display: isLoggedIn ? 'block' : 'none' }}
           backgroundColor="rgb(134 187 246)"
         >
           <Menu>
@@ -71,7 +76,6 @@ function App() {
           </Routes>
         </main>
       </div>
-    </BrowserRouter>
   );
 }
 

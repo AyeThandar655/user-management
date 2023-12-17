@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { UserDataApi, EditUserApi, DeleteUserApi } from "../../API/api";
+import { UserDataApi, EditUserApi, DeleteUserApi, DepartmentApi, PositionApi } from "../../API/api";
 import "./home.css";
 import { BsFillTrashFill, BsFillPencilFill } from "react-icons/bs";
 
@@ -7,14 +7,17 @@ const Home = () => {
 
     const userData = JSON.parse(localStorage.getItem('userData'));
     const [users, setUsers] = useState([]);
+    const [departments, setDepartments] = useState([]);
+    const [positions, setPositions] = useState([]);
     const [editModalOpen, setEditModalOpen] = useState(false);
     const [editStatus, setEditStatus] = useState(false);
     const [editedUser, setEditedUser] = useState({
-        id: "",
+        user_id: "",
         name: "",
         email: "",
-        phonenumber: "",
-        role: "",
+        phone_number: "",
+        department_name: "",
+        position_name: "",
     });
     const [deleteModalOpen, setDeleteModalOpen] = useState(false);
     const [deleteStatus, setDeleteStatus] = useState(false);
@@ -25,7 +28,8 @@ const Home = () => {
             UserDataApi({ role: userData.user_role })
                 .then((response) => {
                     if (response.status) {
-                        setUsers(response.user_data);
+                        const sortedUser = [...response.user_data].sort((a, b) => a.id - b.id);
+                        setUsers(sortedUser);
                     }
                 })
                 .catch((error) => {
@@ -35,13 +39,38 @@ const Home = () => {
 
     }, [userData, editStatus, deleteStatus])
 
+    useEffect(() => {
+        DepartmentApi()
+            .then((response) => {
+                if (response.status) {
+                    setDepartments(response.department_data);
+                }
+            })
+            .catch((error) => {
+                console.log("error", error);
+            });
+
+            if( editedUser.department_name !== ""){
+                PositionApi({ department_name: editedUser.department_name })
+                .then((response) => {
+                    if (response.status) {
+                        setPositions(response.position_data);
+                    }
+                })
+                .catch((error) => {
+                    console.log("error", error);
+                });
+
+            }
+    }, [editedUser])
+
     const deleteRow = (id) => {
         setDeleteUserID(id)
         setDeleteModalOpen(true);
     };
 
-    const editRow = (id) => {
-        const userToEdit = users.find((user) => user.id === id);
+    const editRow = (user_id) => {
+        const userToEdit = users.find((user) => user.user_id === user_id);
         setEditedUser(userToEdit);
         setEditModalOpen(true);
     };
@@ -56,7 +85,6 @@ const Home = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         EditUserApi({ _data: editedUser })
             .then((response) => {
                 if (response.status) {
@@ -64,8 +92,9 @@ const Home = () => {
                         id: "",
                         name: "",
                         email: "",
-                        phonenumber: "",
-                        role: "",
+                        phone_number: "",
+                        department_name: "",
+                        position_name: "",
                     });
                     setEditModalOpen(false);
                     setEditStatus(true);
@@ -82,15 +111,15 @@ const Home = () => {
             id: "",
             name: "",
             email: "",
-            phonenumber: "",
-            role: "",
+            phone_number: "",
+            department_name: "",
+            position_name: "",
         });
     };
 
     const handleDeleteConfirm = () => {
         DeleteUserApi(deleteUserID)
             .then((response) => {
-                console.log("response.....", response);
                 if (response.status) {
                     setDeleteStatus(!deleteStatus);
                 }
@@ -116,7 +145,8 @@ const Home = () => {
                         <th>Name</th>
                         <th>Email</th>
                         <th>Phone number</th>
-                        <th>Role</th>
+                        <th>Department</th>
+                        <th>Position</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -127,17 +157,18 @@ const Home = () => {
                                 <td>{user.id}</td>
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
-                                <td>{user.phonenumber}</td>
-                                <td>{user.role}</td>
+                                <td>{user.phone_number}</td>
+                                <td>{user.department_name}</td>
+                                <td>{user.position_name}</td>
                                 <td>
                                     <span className="actions">
                                         <BsFillPencilFill
                                             className="edit-btn"
-                                            onClick={() => editRow(user.id)}
+                                            onClick={() => editRow(user.user_id)}
                                         />
                                         <BsFillTrashFill
                                             className="delete-btn"
-                                            onClick={() => deleteRow(user.id)}
+                                            onClick={() => deleteRow(user.user_id)}
                                         />
                                     </span>
                                 </td>
@@ -181,21 +212,45 @@ const Home = () => {
                                 <label htmlFor="status">Phone Number</label>
                                 <input
                                     type="text"
-                                    id="phonenumber"
-                                    name="phonenumber"
-                                    value={editedUser.phonenumber}
+                                    id="phone_number"
+                                    name="phone_number"
+                                    value={editedUser.phone_number}
                                     onChange={handleInputChange}
                                 />
                             </div>
                             <div className="form-group">
-                                <label htmlFor="status">Role</label>
-                                <input
-                                    type="text"
-                                    id="role"
-                                    name="role"
-                                    value={editedUser.role}
+                                <label htmlFor="status">Department</label>
+                                <select
+                                    id="department"
+                                    name="department_name"
+                                    value={editedUser.department_name}
                                     onChange={handleInputChange}
-                                />
+                                    className="select-css"
+                                >
+                                    <option value="">Select Department</option>
+                                    {departments.map((department) => (
+                                        <option key={department.id} value={department.name}>
+                                            {department.name}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="status">Position</label>
+                                <select
+                                    id="position"
+                                    name="position_name"
+                                    value={editedUser.position_name}
+                                    onChange={handleInputChange}
+                                    className="select-css"
+                                >
+                                    <option value="">Select Position</option>
+                                    {positions.map((position) => (
+                                        <option key={position.position_id} value={position.position_name}>
+                                            {position.position_name}
+                                        </option>
+                                    ))}
+                                </select>
                             </div>
                             <button type="submit" className="btn" onClick={handleSubmit}>
                                 Submit

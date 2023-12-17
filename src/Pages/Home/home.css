@@ -158,3 +158,10 @@
   background-color: #ff3b3b;
   color: white;
 }
+
+.select-css{
+  border: 1px solid #333;
+  border-radius: 5px;
+  padding: 0.5rem;
+  font-size: 1rem;
+}

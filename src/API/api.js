@@ -21,7 +21,6 @@ export const UserDataApi = async (_data) => {
 };
 
 export const EditUserApi = async ({ _data }) => {
-    console.log("_data.....", _data)
   return await fetch(base_url + "edit", {
       method: "POST",
       headers: {
@@ -49,4 +48,24 @@ export const ChangePasswordApi = async ({ _data }) => {
       },
       body: JSON.stringify(_data),
   }).then((response) => response.json());
+};
+
+export const DepartmentApi = async (id) => {
+    return await fetch(base_url + "getdepartment", {
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    }).then((response) => response.json());
+};
+
+
+export const PositionApi = async (_data) => {
+    return await fetch(base_url + "getposition", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(_data),
+    }).then((response) => response.json());
 };
