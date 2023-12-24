@@ -1,0 +1,25 @@
+.title {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 30px;
+}
+
+.paragraph-container {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding-left: 10%;
+    padding-right: 10%;
+    text-align: justify;
+    line-height: 2;
+}
+ 
+.paragraph,
+  .para-text {
+    text-align: justify;
+}
+  
+.space {
+    height: 10vh;
+}

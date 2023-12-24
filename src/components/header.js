@@ -1,20 +1,40 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./header.css";
 
-const Header = ({ handleLogout }) => {
+const Header = ({ handleLogout, role }) => {
 
   return (
     <div className="headerContainer">
-      <Link to="/home" className="headerLink">
-        Home
-      </Link>
-      <Link to="/change-password" className="headerLink">
+      {
+        role === 1 && (
+          <>
+            <NavLink to="/home" className="headerLink">
+              Home
+            </NavLink>
+            <NavLink to="/role" className="headerLink">
+              Role
+            </NavLink>
+            <NavLink to="/register" className="headerLink">
+              Register
+            </NavLink>
+          </>)
+      }
+      <NavLink to="/change-password" className="headerLink">
         Change Password
-      </Link>
-      <Link to="/" onClick={handleLogout} className="headerLink">
+      </NavLink>
+      <NavLink to="/profile" className="headerLink">
+        Profile
+      </NavLink>
+      <NavLink to="/aboutus" className="headerLink">
+        About
+      </NavLink>
+      <NavLink to="/contactus" className="headerLink">
+        Contact
+      </NavLink>
+      <NavLink to="/" onClick={handleLogout} className="headerLink">
         Logout
-      </Link>
+      </NavLink>
     </div>
   );
 };

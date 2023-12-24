@@ -1,0 +1,106 @@
+.create-user-css {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+  }
+  
+.create-user-form-css{
+  width : 40%;
+  margin-top: 3.5%;
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 30px 40px;
+  box-shadow: 0px 0px 3px 3px rgba(0, 0, 0.1, 0.1);
+  } 
+
+.createUserTitle {
+    text-align: center;
+    margin-bottom : 30px;
+    font-weight : bold;
+  }
+
+.password-input {
+    padding-right: 2.5rem; 
+  }
+  
+.relative-register {
+    position: relative;
+    height: 43px;
+  }
+  
+.eye-icon,
+  .eye-icon-cp {
+    position: absolute;
+    top: 115%;
+    right: 25px; 
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 20px;
+    z-index: 1; 
+}
+  
+.form-group-register {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.registerInputBox {
+  width: 100%;
+  padding: 0.4rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.register-label{
+  margin-bottom: 7px;
+  font-weight: bold;
+}
+  
+.Dropdown-control {
+    position: relative;
+    overflow: hidden;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+    color: #000;
+    cursor: default;
+    outline: none;
+    padding: 0.4rem;
+    transition: all 200ms ease;
+}
+
+.create-user-submit-btn-main {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; 
+}
+  
+.create-user-submit-btn {
+    border: none;
+    background: #2596be;
+    color: white;
+    padding: 7px 30px; 
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.pw-main {
+  margin-bottom: 30px;
+}
+
+.recaptcha-register {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.select-css-register {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0.4rem;
+  color: #333;
+}

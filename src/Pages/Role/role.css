@@ -1,0 +1,179 @@
+.role-page-container {
+    min-height: 50vh; 
+}
+  
+.create-role-btn-main {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 16.2%;
+}
+
+.create-role-btn {
+    border: none;
+    background: #2596be;
+    color: white;
+    padding: 7px 20px !important;
+    margin: 20px 20px!important;
+    font-size: 17px !important;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+    margin-top: 20px;
+}
+
+.role-table-main-container {
+    width : "100%"
+}
+
+.role-table {
+    overflow: hidden;
+    border-collapse: collapse;
+    box-shadow: 0px 1px 9px #ccc;
+    border-radius: 4px;
+    width: 65%;
+    margin: auto;
+}
+  
+.role-table thead {
+    background-color: #ccc;
+    color: #222;
+}
+  
+.role-table th {
+    text-align: left;
+}
+  
+.role-table th,
+  .role-table td {
+    padding: 0.8rem;
+}
+  
+.role-table td {
+    border-top: 0.5px solid #ddd;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+  
+.role-table tbody tr:hover {
+    background-color: #eee;
+}
+  
+
+.role-actions {
+    display: flex;
+    margin-left: 0;
+}
+  
+.role-actions svg {
+    cursor: pointer;
+}
+   
+.role-edit-btn {
+    color: #4211f1;
+    margin-right: 15px;
+}
+   
+.role-delete-btn {
+    color: #e10d05;
+}
+ 
+.create-role-modal-container {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+.create-role-modal {
+    border-radius: 4px;
+    padding: 2rem;
+    background-color: white;
+    width: 25em;
+}
+  
+.createRoleModalTitle {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-group-role {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.createRoleInputBox {
+    width: 100%;
+    padding: 0.4rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+  
+.createrole-label {
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+    
+.create-role-button-css {
+    display: block;
+    margin: auto;
+    border: none;
+    background: #2596be;
+    color: white;
+    padding: 7px 30px !important;
+    font-size: 18px !important;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+  
+.description-css {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0.4rem;
+    font-size: 1rem;
+}
+
+.edit-role-modal-container {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+.edit-role-modal {
+    border-radius: 5px;
+    padding: 2rem;
+    background-color: white;
+    width: 25em;
+}
+  
+.modalEditTitle {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.edit-role-btn {
+    display: block;
+    margin: auto;
+    border: none;
+    background: #2596be;
+    color: white;
+    padding: 10px 30px !important;
+    font-size: 18px !important;
+    border-radius: 8px;
+    cursor: pointer;
+}

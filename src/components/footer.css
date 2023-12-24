@@ -1,0 +1,150 @@
+
+.top-footer{
+    padding: 40px 68px;
+    background-color: #2596be;
+    margin-top: 55px;
+  }
+    
+.footermenu{
+    z-index: 1;
+    color: #fff;
+}
+  
+.contact-info-widget{
+    margin: 0 0 22px;
+}
+  
+.bottom-widget-title{
+    margin: 0 0 19px;
+    padding: 0;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 27px;
+    text-transform: uppercase;
+}
+  
+.contact-info-description{
+    padding-bottom: 6px;
+    margin-bottom: 0;
+    font-weight: 400;
+    color : #fff;
+    line-height: 25px;
+    font-size: 15px;
+}
+  
+.contact-info-content span{
+    color: #fff;
+    display: block;
+    margin: 11px 0 0;
+    font-size: 15px;
+    position: relative;
+    font-style: normal;
+}
+  
+.company-widget{
+    margin : 0 0 22px;
+}
+  
+.company-content{
+    font-size: 15px;
+    color: #fff;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+}
+  
+.company-content p a {
+    font-weight : 400;
+    color: #fff;
+    line-height: 23px;
+    padding-bottom: 10px;
+    margin-bottom: 0;
+    text-decoration: none;
+    font-size: 15px;
+}
+  
+.company-content p a:hover{
+    color: #fff;
+}
+  
+.openHour-widget{
+    margin : 0 0 22px;
+}
+  
+.openHour-content{
+    font-size: 15px;
+    color: #fff;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+}
+  
+.openHour-content p{
+    font-weight : 400;
+    color: #fff;
+    line-height: 25px;
+    padding-bottom: 10px;
+    margin-bottom: 0;
+    text-decoration: none;
+    font-size: 15px;
+}
+  
+.letter-widget{
+    margin : 0 0 22px;
+}
+  
+.letter-content{
+    font-size: 15px;
+    color: #fff;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+}
+  
+.letter-content p{
+    font-weight : 400;
+    color: #fff;
+    line-height: 25px;
+    padding-bottom: 10px;
+    margin-bottom: 0;
+    text-decoration: none;
+    font-size: 15px;
+}
+  
+.sletter-textbox{
+    margin : 0 0 22px;
+}
+  
+.letteremail-formgroup{
+    width: 100%;
+}
+  
+.newsletter-form{
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+  
+@media all and (max-width: 576px){
+    .footermenu{
+      padding: 0px 20px!important;
+    }
+
+}
+
+.footer-ci-col-desc{
+    font-size: 15px;
+    text-align: left;
+    margin-bottom: 0px;
+}
+
+.footer-ci-col-desc span{
+    display: flex;
+    align-items: center;
+    margin: 15px 0px 10px 0px;
+}
+
+.footer-ci-col-desc span i{
+    padding-right: 15px;
+}

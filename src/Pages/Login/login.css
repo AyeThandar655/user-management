@@ -2,59 +2,89 @@ body {
   overflow: hidden;
 }
 
-.mainContainer {
+.mainLoginContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  background-image: url('../../assets/login_image.jpg');
-  background-size: cover;min-height: 100vh; 
-  background-image: url('../../assets/login_image.jpg');
+  background-image: url('../../assets/user-management-image.jpg');
   background-size: cover;
+  min-height: 100vh; 
   margin: 0;
 }
 
-.cardContainer {
+.cardLoginContainer {
   background-color: #fff; 
-  border-radius: 8px;
+  border-radius: 4px;
   padding: 20px 40px; 
-  width: 30%;
+  width: 25%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.titleContainer {
+.titleLoginContainer {
   font-size: 24px;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   text-align: center;
 }
 
-.inputContainer {
-  margin-bottom: 15px;
+.loginContainer {
   text-align: center; /* Center the child elements */
 }
 
-.inputBox {
+.loginInputBox {
   width: 100%;
-  padding: 10px;
+  padding: 0.4rem;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 4px;
   box-sizing: border-box;
 }
 
-.inputButton {
+.loginButton {
   border: none;
-  background: cornflowerblue;
+  background: #2596be;
   color: white;
-  padding: 10px 30px !important;
+  padding: 7px 30px !important;
   margin: 8px;
   font-size: 18px !important;
-  border-radius: 8px;
+  border-radius: 4px;
   cursor: pointer;
 }
 
-.errorLabel {
-  color: red;
-  padding-top: 5px;
+.login-label{
+  margin-bottom: 7px;
+  font-weight: bold;
+}
+
+.forgotLabel {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 5px;
+}
+
+.forgotpass-a {
+  text-decoration: none;
+  color: rgb(24, 144, 255);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.relative-login {
+  position: relative;
+  height: 43px;
+}
+
+.eye-icon-login {
+  position: absolute;
+  top: 35%;
+  right: 20px; 
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 20px;
+  z-index: 1; 
+}
+
+.recaptcha-login {
+  margin-top: 20px;
 }

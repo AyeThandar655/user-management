@@ -1,69 +1,95 @@
-.title {
+.home-page-container {
+  min-height: 50vh;
+}
+
+.no-user {
   text-align: center;
   margin-top: 30px;
+  font-size: 20px;
+  font-weight: bold;
 }
 
-.table {
+.create-user-btn-main {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 3.8%;
+}
+
+.create-user-btn {
+  border: none;
+  background: #2596be;
+  color: white;
+  padding: 7px 20px !important;
+  margin: 20px 20px!important;
+  font-size: 17px !important;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+} 
+
+.user-table-main-container {
+  width : 100%
+}
+
+.user-table {
   overflow: hidden;
   border-collapse: collapse;
-  box-shadow: 0px 10px 10px #ccc;
-  border-radius: 10px;
+  box-shadow: 0px 1px 9px #ccc;
+  border-radius: 4px;
   width: 90%;
   margin: auto;
-  margin-top: 30px;
 }
 
-.table thead {
+.user-table thead {
   background-color: #ccc;
   color: #222;
 }
 
-.table th {
+.user-table th {
   text-align: left;
 }
 
-.table th,
-.table td {
+.user-table th,
+.user-table td {
   padding: 0.8rem;
 }
 
-.table td {
+.user-table td {
   border-top: 0.5px solid #ddd;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.table tbody tr:hover {
+.user-table tbody tr:hover {
   background-color: #eee;
 }
 
 .label {
-  border-radius: 3px;
+  border-radius: 4px;
   padding: 0.3rem;
   color: white;
 }
 
-.actions {
+.user-actions {
   display: flex;
   margin-left: 0;
 }
 
-.actions svg {
+.user-actions svg {
   cursor: pointer;
 }
 
-
-.edit-btn {
+.user-edit-btn {
   color: #4211f1;
   margin-right: 15px;
 }
 
 
-.delete-btn {
+.user-delete-btn {
   color: #e10d05;
 }
 
-.modal-container {
+.edit-user-modal-container {
   position: fixed;
   z-index: 1;
   left: 0;
@@ -76,53 +102,48 @@
   justify-content: center;
 }
 
-.modal {
-  border-radius: 5px;
+.edit-user-modal {
+  border-radius: 4px;
   padding: 2rem;
   background-color: white;
-  width: 25em;
+  width: 40em;
 }
 
-.modalTitle {
+.editUserModalTitle {
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 }
 
-.modal .btn {
+.edit-user-btn {
   display: block;
   margin: auto;
   border: none;
-  background: cornflowerblue;
+  background: #2596be;
   color: white;
-  padding: 10px 30px !important;
+  padding: 7px 30px !important;
   font-size: 18px !important;
-  border-radius: 8px;
+  border-radius: 4px;
   cursor: pointer;
+  margin-top: 20px;
 }
 
-.form-group {
+.form-group-home {
   display: flex;
   flex-direction: column;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
 }
 
-.form-group input {
-  border: 1px solid #333;
-    border-radius: 5px;
-    padding: 0.5rem;
-    font-size: 1rem;
+.editUserInputBox {
+  width: 100%;
+  padding: 0.4rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
-.form-group label {
-  margin-bottom: 10px;
-}
-
-.error {
-  background-color: #f8d7da;
-  color: #df4759;
-  padding: 0.5rem;
-  border-radius: 0.3rem;
-  margin-bottom: 1rem;
+.edituser-label{
+  margin-bottom: 7px;
+  font-weight: bold;
 }
 
 .delete-confirmation-modal {
@@ -146,7 +167,7 @@
   padding: 7px 20px;
   margin: 0 10px;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 4px;
 }
 
 .delete-confirmation-modal button:first-child {
@@ -159,9 +180,23 @@
   color: white;
 }
 
-.select-css{
-  border: 1px solid #333;
-  border-radius: 5px;
-  padding: 0.5rem;
-  font-size: 1rem;
+.select-css-home {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0.4rem;
+  color: #333;
+}
+
+.pagination-bar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.filterUser {
+  padding: 7px 20px !important;
+  margin: 20px 20px!important;
+  font-size: 17px !important;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }

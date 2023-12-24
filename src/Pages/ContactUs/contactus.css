@@ -1,0 +1,267 @@
+.contact-body-content{
+    padding-top: 0px;
+    height: auto;
+}
+
+@media (min-width: 1025px) {
+    .headcontact-section {
+      background-image: url(../../assets/contact_us.png);
+      background-size: 650px;
+      height: auto;
+    }
+    .headcontact-text {
+      max-width: 50%;
+      margin: 0;
+    }
+  }
+  
+  .headcontact-section {
+    background-repeat: no-repeat;
+    background-position: top right;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+  }
+  
+  .headcontact-container {
+    position: relative;
+    padding: 70px 0px 20px 0px;
+    overflow: hidden;
+    z-index: 20;
+  }
+  
+  .headcontact-content {
+    box-sizing: content-box;
+    max-width: 1080px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1.5rem;
+  }
+  
+  .headcontact-text {
+    position: static;
+    padding-right: 0;
+    text-align: left;
+    z-index: 48;
+  }
+  
+  .headcontact-h1 {
+    font-size: 46px;
+    color: #2596be;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+  }
+  
+  .headcontact-h2 {
+    font-size: 46px;
+    color: #2596be;
+    font-weight: 700;
+  }
+  
+  .headcontact-p {
+    text-align: left;
+    font-size: 1.125rem;
+    line-height: 1.5em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+  
+  .headcontact-contact-numbers {
+    padding-top: 70px;
+    padding-bottom: 30px;
+  }
+  
+  .head-card-body {
+    height: 220px;
+    border-radius: 4px;
+  }
+  
+  .card-title {
+    text-align: center;
+    color: #2596be;
+  }
+  
+  .card-span {
+    text-align: center;
+    justify-content: center;
+    font-size: 20.8px;
+    color: #2596be;
+    padding-top: 10px;
+  }
+  
+  .card-text-link {
+    color: #0091ae;
+    text-decoration: none;
+    font-size: 12.8px;
+    text-align: center;
+    justify-content: center;
+    padding-top: 10px;
+  }
+  
+  .head-card-p {
+    text-align: center;
+    justify-content: center;
+    font-size: 22px;
+    color: #33475b;
+    font-weight: bold;
+    padding-top: 10px;
+  }
+  
+  .head-button {
+    background-color: #2596be;
+    border-radius: 4px;
+    color: #fff;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-color: #2596be;
+  }
+
+  .head-button-div {
+    text-align: center;
+    justify-content: center;
+    padding-top: 10px;
+    margin-top: 0x;
+  }
+  
+  @media all and (max-width: 1025px) {
+    .headcontact-text,
+    .headcontact-p {
+      text-align: center;
+    }
+  }
+  
+  @media all and (max-width: 768px) {
+    .headcontact-contact-numbers {
+      padding-top: 20px;
+    }
+    .head-card-body {
+      height: 190px;
+    }
+    .card-col {
+      padding-bottom: 7px;
+      padding-top: 7px;
+    }
+  }
+  
+  
+  @media all and (max-width: 450px) {
+    .head-button-div {
+      text-align: center;
+      justify-content: center;
+      padding-top: 0px;
+      margin-top: -10px;
+    }
+}
+  
+.row-css {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+ 
+
+@media (min-width: 1025px) {
+  .map-and-form {
+    padding-top: 20px;
+    border-bottom: 3px solid #2596be;
+  }
+}
+
+.middlecontact-content {
+  padding-top: 50px;
+}
+
+.middlecontact-content {
+  text-align: center;
+  justify-content: center;
+}
+
+.middle-h1 {
+  font-size: 46px;
+  color: #161514;
+  font-weight: 700;
+}
+
+.head-icon-address {
+  display: inline-block;
+}
+
+.head-icon-phone {
+  display: inline-block;
+}
+
+.head-phone-div {
+  padding-right: 130px;
+  display: inline-block;
+}
+
+.head-icon-email {
+  display: inline-block;
+}
+
+.head-icon-p {
+  display: inline-block;
+  color: #131312;
+  padding-left: 10px;
+  margin-top: -10px;
+}
+
+.head-email-div {
+  padding-right: 38px;
+}
+
+.head-icon-main {
+  text-align: left;
+  padding-top: 20px;
+}
+
+.head-phone-div {
+  padding-top: 10px;
+}
+
+.head-email-div {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+@media (max-width: 1025px) {
+  .map-and-form {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}
+
+.map-col-css{
+    height: 415px !important;
+}
+
+.map-col-css{
+  padding-right: 0px !important;
+}
+
+.contactbg{
+  background: #2596be;
+}
+
+.contactbg span{
+  color: #fff;
+}
+
+.contactbg span i{
+  font-size: 18px;
+}
+
+.contactinfo{
+  padding-left: 20px;
+}
+
+.i4ewOd-pzNkMb-haAclf{
+  display: none !important;
+}

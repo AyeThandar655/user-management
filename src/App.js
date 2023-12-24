@@ -1,33 +1,46 @@
-import { Route, Routes, Link, useNavigate } from 'react-router-dom';
-import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
-import React, { useState, useEffect } from 'react';
+import { Route, Routes, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect, Fragment } from 'react';
 import Home from './Pages/Home/home';
 import Login from './Pages/Login/login';
+import Role from './Pages/Role/role';
 import ChangePassword from './Pages/ChangePassword/changepassword';
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import Lock from '@mui/icons-material/Lock';
-import Logout from '@mui/icons-material/Logout';
-import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
+import ForgotPassword from './Pages/ForgotPassword/forgotpassword';
+import ResetPassword from './Pages/ResetPassword/resetpassword';
+import Register from './Pages/Register/register';
+import Profile from './Pages/Profile/profile'
+import Header from './components/header';
+import Footer from './components/footer';
+import AboutUs from './Pages/AboutUs/aboutus';
+import ContactUs from './Pages/ContactUs/contactus';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [role, setRole] = useState("");
   const navigate = useNavigate();
 
   const updateLoginStatus = (status, role) => {
     setIsLoggedIn(status);
     localStorage.setItem('isLoggedIn', JSON.stringify(status));
+    setRole(role);
+    localStorage.setItem('isRole', JSON.stringify(role));
   };
 
   useEffect(() => {
     const storedStatus = localStorage.getItem('isLoggedIn');
     setIsLoggedIn(JSON.parse(storedStatus));
+    const roleStatus = localStorage.getItem('isRole');
+    setRole(JSON.parse(roleStatus))
   }, []);
 
   useEffect(() => {
-    if(isLoggedIn){
+    const currentPath = window.location.pathname;
+    if (isLoggedIn && role === 1 && (currentPath === '/home' || currentPath === '/')) {
       navigate('/home');
     }
-  }, [isLoggedIn, navigate]);
+    else if(isLoggedIn && role !== 1 && (currentPath === '/home' || currentPath === '/')){
+      navigate('/change-password');
+    }
+  }, [isLoggedIn, role, navigate]);
 
   const handleLogout = () => {
     setIsLoggedIn(false);
@@ -36,46 +49,27 @@ function App() {
     navigate('/');
   };
 
-
   return (
-      <div id="app" style={{ height: '100vh', display: 'flex' }}>
-        <Sidebar
-          style={{ height: '100vh', display: isLoggedIn ? 'block' : 'none' }}
-          backgroundColor="rgb(134 187 246)"
-        >
-          <Menu>
-            <MenuItem
-              icon={<MenuOutlinedIcon />}
-              style={{ textAlign: 'center' }}
-            >
-              <h3> User Management </h3>
-            </MenuItem>
-
-            {isLoggedIn && (
-              <>
-                <MenuItem icon={<HomeOutlinedIcon />} component={<Link to="/home" />}>
-                  Home
-                </MenuItem>
-                <MenuItem icon={<Lock />} component={<Link to="/change-password" />}>
-                  Change Password
-                </MenuItem>
-                <MenuItem icon={<Logout />} onClick={handleLogout}>
-                  Log Out
-                </MenuItem>
-              </>
-            )}
-          </Menu>
-        </Sidebar>
-
-        {/* Main content */}
-        <main style={{ display: 'block' }}>
-          <Routes>
-            <Route path="/" element={<Login updateLoginStatus={updateLoginStatus} />} />
+    <Fragment>
+      {isLoggedIn && (<Header handleLogout={handleLogout} role={role}/>)}
+      <Routes>
+        <Route path="/" element={<Login updateLoginStatus={updateLoginStatus} />} />
+        {role === 1 && (
+          <>
             <Route path="/home" element={<Home />} />
-            <Route path="/change-password" element={<ChangePassword setIsLoggedIn={setIsLoggedIn} />} />
-          </Routes>
-        </main>
-      </div>
+            <Route path="/role" element={<Role />} />
+            <Route path="/register" element={<Register />} />
+          </>)}
+
+        <Route path="/change-password" element={<ChangePassword setIsLoggedIn={setIsLoggedIn} />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/contactus" element={<ContactUs />} />
+      </Routes>
+      {isLoggedIn && (<Footer />)}
+    </Fragment>
   );
 }
 

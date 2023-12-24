@@ -1,0 +1,41 @@
+.alert {
+    position: relative;
+    padding: 1rem 4.4rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    margin: 0 auto;
+    width: 30%;
+    top: 20px;
+}
+
+.error {
+    color: #fff;
+    background-color: #f82f40;
+    border-color: #f82f40;
+}
+  
+.success {
+    color: #fff;
+    background-color: #00a55e;
+    border-color: #00a55e;
+}
+  
+.closebtn {
+    margin-left: 20px;
+    color: #fff;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+  
+.closebtn:hover {
+    color: black;
+}
+
+.hide {
+    display: none;
+}
