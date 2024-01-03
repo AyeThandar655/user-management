@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { CheckEmailApi } from "../../API/api";
 import "./forgotpassword.css";
 import Alert from "../../components/alert";
@@ -8,7 +7,6 @@ const ForgotPassword = () => {
 
     const [email, setEmail] = useState("");
     const [emailError, setEmailError] = useState("");
-    const navigate = useNavigate();
     const [alertMessage, setAlertMessage] = useState("")
     const [alertType, setAlertType] = useState("")
     const [isShow, setIsShow] = useState(false);
@@ -18,7 +16,10 @@ const ForgotPassword = () => {
         CheckEmailApi({ _data: { email: email } })
             .then((response) => {
                 if (response.success) {
-                    navigate('/reset-password', { state: { email: email } });
+                    setEmail("")
+                    setAlertType("success")
+                    setAlertMessage(response.message);
+                    setIsShow(true);
                 } else {
                     setAlertType("error")
                     setAlertMessage(response.message);

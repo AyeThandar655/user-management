@@ -40,7 +40,7 @@ function Contact() {
 
                                                     <div className="head-button-div">
                                                         <button className="head-button">
-                                                            Chat with Sales
+                                                            <a href="tel: +66 (0)2-801-2778" className='chat-css'> Chat with Sales </a>
                                                         </button>
                                                     </div>
                                                 </Card.Body>
@@ -58,8 +58,8 @@ function Contact() {
                                                         <p className="head-card-p"> Call us directly</p>
                                                     </div>
                                                     <div className="card-span">
-                                                        <span className="card-span" href="#">
-                                                            +66 (0)2-801-2778
+                                                        <span className="card-span">
+                                                            <a href="tel: +66 (0)2-801-2778" className="call-css"> +66 (0)2-801-2778</a>
                                                         </span>
                                                     </div>
                                                 </Card.Body>
@@ -82,7 +82,6 @@ function Contact() {
                                         height="100%"
                                         allowFullScreen=""
                                         loading="lazy"
-                                        referrerpolicy="no-referrer-when-downgrade"
                                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3876.0157194296917!2d100.45137227516275!3d13.717497698086653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e2983da969a4ed%3A0xaaf58a37e5af697f!2s39%2F3%20Phet%20Kasem%20Rd%2C%20Khwaeng%20Bang%20Wa%2C%20Khet%20Phasi%20Charoen%2C%20Krung%20Thep%20Maha%20Nakhon%2010160!5e0!3m2!1sen!2sth!4v1703412707375!5m2!1sen!2sth"
                                     ></iframe>
                                 </Col>

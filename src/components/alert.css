@@ -1,12 +1,10 @@
 .alert {
     position: relative;
     padding: 1rem 4.4rem;
-    margin-bottom: 1rem;
     border: 1px solid transparent;
     border-radius: 0.25rem;
-    margin: 0 auto;
+    margin: 20px auto;
     width: 30%;
-    top: 20px;
 }
 
 .error {
@@ -19,6 +17,12 @@
     color: #fff;
     background-color: #00a55e;
     border-color: #00a55e;
+}
+
+.warning {
+    color: #fff;
+    background-color: #bfbf04;
+    border-color: #bfbf04;
 }
   
 .closebtn {

@@ -60,7 +60,6 @@ export const CreateRoleApi = async (_data) => {
 };
 
 export const EditRoleApi = async (_data) => {
-    console.log("_data....", _data);
     return await fetch(base_url + "edit-role", {
         method: "POST",
         headers: {
@@ -71,7 +70,6 @@ export const EditRoleApi = async (_data) => {
 };
 
 export const DeleteRoleApi = async (id) => {
-    console.log("id...", id);
     return await fetch(base_url + `delete-role/${id}`, {
         method: "DELETE",
         headers: {
@@ -81,7 +79,6 @@ export const DeleteRoleApi = async (id) => {
 };
 
 export const CreateUsersApi = async (_data) => {
-    console.log("_data.....", _data)
     return await fetch(base_url + "create-user", {
         method: "POST",
         headers: {
@@ -129,9 +126,24 @@ export const DepartmentApi = async (id) => {
     }).then((response) => response.json());
 };
 
+export const UpdateUserProfileApi = async ({ _data }) => {
+    const formData = new FormData();
+    formData.append('user_id', _data.user_id);
+    formData.append('first_name', _data.first_name);
+    formData.append('last_name', _data.last_name);
+    formData.append('birth_day', _data.birth_day);
+    formData.append('birth_month', _data.birth_month);
+    formData.append('birth_year', _data.birth_year);
+    formData.append('phone_number', _data.phone_number);
+    formData.append('user_image', _data.user_image);
+    return await fetch(base_url + "update-user-profile", {
+        method: "POST",
+        body: formData,
+    }).then((response) => response.json());
+};
 
-export const PositionApi = async (_data) => {
-    return await fetch(base_url + "getposition", {
+export const AccessPointRoleDataApi = async (_data) => {
+    return await fetch(base_url + "getaccesspoint-role", {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
@@ -140,8 +152,8 @@ export const PositionApi = async (_data) => {
     }).then((response) => response.json());
 };
 
-export const UpdateUserProfileApi = async ({ _data }) => {
-    return await fetch(base_url + "update-user-profile", {
+export const AccessPointDepartmentDataApi = async (_data) => {
+    return await fetch(base_url + "getaccesspoint-department", {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'

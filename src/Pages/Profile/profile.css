@@ -5,7 +5,7 @@
 }
   
 .profile-form-css{
-    width : 40%;
+    width : 43%;
     margin-top: 3.5%;
     background-color: #fff;
     border-radius: 4px;
@@ -76,4 +76,58 @@
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.profileLeft {
+    justify-content: center !important;
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+  
+.profileImg {
+    text-align: center;
+    object-fit: cover;
+}
+  
+.rounded-profile {
+    border-radius: 50%;
+}
+  
+input#profile-IMAGE {
+    display: none;
+}
+
+.changeBtn {
+    font-size: 16px;
+    display: inline-block !important;
+    margin-top: 15px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #2596be;
+    cursor: pointer;
+}
+
+.profile-image-container {
+    position: relative;
+}
+
+.camera-icon-container {
+    position: absolute;
+    top: 92px;
+    right: 4px;
+    cursor: pointer;
+    z-index: 1;
+    color: #fff;
+    padding: 1px 4px 4px 4px;
+    border-radius: 36px;
+    border: 1px solid #2596be;
+    background: #2596be;
+    width: 33px;
+    height: 33px;
+}
+
+.camera-icon {
+    width: 20px; 
+    height: 18px;
 }

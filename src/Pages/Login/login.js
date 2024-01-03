@@ -27,24 +27,24 @@ const Login = ({ updateLoginStatus }) => {
         setShowPassword((prevShowPassword) => !prevShowPassword);
     };
 
-    // Log in a user using email and password
-    const logIn = () => {
-        LoginApi({ _data: { email: email, password: password } })
-            .then((response) => {
-                if (response.success) {
-                    localStorage.setItem('userData', JSON.stringify(response.user));
-                    updateLoginStatus(true, response.user.role_id);
-                    navigate('home');
-                } else {
-                    setAlertType("error")
-                    setAlertMessage(response.message);
-                    setIsShow(true);
-                }
-            })
-            .catch((error) => {
-                console.log("error", error);
-            });
-    }
+    const logIn = async () => {
+        try {
+            const response = await LoginApi({ _data: { email: email, password: password } });
+
+            if (response.success) {
+                localStorage.setItem('userData', JSON.stringify(response.user));
+                updateLoginStatus(true, response.user.role_id, response.user.department_id);
+                navigate('/profile');
+            } else {
+                setAlertType("error");
+                setAlertMessage(response.message);
+                setIsShow(true);
+            }
+        } catch (error) {
+            console.error("Error during login:", error);
+        }
+    };
+
 
     const onButtonClick = () => {
         // Set initial error values to empty

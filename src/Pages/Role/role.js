@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Fragment } from "react";
 import { RoleDataApi, CreateRoleApi, EditRoleApi, DeleteRoleApi } from "../../API/api";
 import "./role.css";
-//import { BsFillTrashFill, BsFillPencilFill } from "react-icons/bs";
+import { BsFillTrashFill, BsFillPencilFill } from "react-icons/bs";
 import Alert from "../../components/alert";
 
 const Role = () => {
@@ -73,7 +73,6 @@ const Role = () => {
 
     const handleCreateRole = (e) => {
         e.preventDefault();
-        console.log("handleCreateRole");
 
         if (role_name === "") {
             setInputError(true)
@@ -125,7 +124,7 @@ const Role = () => {
         DeleteRoleApi(deleteRoleID)
             .then((response) => {
                 if (response.success) {
-                    setDeleteRoleStatus(!deleteRoleStatus);
+                    setDeleteRoleStatus(true);
                 }
                 setShowDeleteRole(false);
             })
@@ -154,7 +153,7 @@ const Role = () => {
                                 <th>ID</th>
                                 <th>Name</th>
                                 <th>Description</th>
-                                {/*  <th width="10%">Action</th> */}
+                                <th width="10%">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -164,7 +163,7 @@ const Role = () => {
                                         <td>{role.role_id}</td>
                                         <td>{role.role_name}</td>
                                         <td>{role.description}</td>
-                                        {/* <td>
+                                        <td>
                                             <span className="role-actions">
                                                 <BsFillPencilFill
                                                     className="role-edit-btn"
@@ -175,7 +174,7 @@ const Role = () => {
                                                     onClick={() => deleteRow(role.role_id)}
                                                 />
                                             </span>
-                                        </td> */}
+                                        </td>
                                     </tr>
                                 );
                             })}

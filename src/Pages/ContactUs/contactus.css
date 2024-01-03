@@ -265,3 +265,13 @@
 .i4ewOd-pzNkMb-haAclf{
   display: none !important;
 }
+
+.chat-css {
+  text-decoration: none !important;
+  color: #fff !important;
+}
+
+.call-css {
+  text-decoration: none !important;
+  color: #2596be !important;
+}

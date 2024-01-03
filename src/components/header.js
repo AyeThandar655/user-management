@@ -2,37 +2,32 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./header.css";
 
-const Header = ({ handleLogout, role }) => {
-
+const Header = ({ accessPointsRole, accessPointsDept }) => {
+  console.log("accessPointsDept.....", accessPointsDept);
   return (
     <div className="headerContainer">
-      {
-        role === 1 && (
-          <>
-            <NavLink to="/home" className="headerLink">
-              Home
-            </NavLink>
-            <NavLink to="/role" className="headerLink">
-              Role
-            </NavLink>
-            <NavLink to="/register" className="headerLink">
-              Register
-            </NavLink>
-          </>)
-      }
-      <NavLink to="/change-password" className="headerLink">
-        Change Password
-      </NavLink>
+      {accessPointsRole.length > 0 &&
+        accessPointsRole.map((accessPointRole) => (
+          <NavLink key={accessPointRole.id} to={`/${accessPointRole.route}`} className="headerLink">
+            {accessPointRole.name}
+          </NavLink>
+        ))}
+      {accessPointsDept.length > 0 &&
+        accessPointsDept.map((accessPointDept) => (
+          <NavLink key={accessPointDept.id} to={`/${accessPointDept.route}`} className="headerLink">
+            {accessPointDept.name}
+          </NavLink>
+        ))}
       <NavLink to="/profile" className="headerLink">
         Profile
       </NavLink>
-      <NavLink to="/aboutus" className="headerLink">
-        About
+      <NavLink to="/change-password" className="headerLink">
+        Change Password
       </NavLink>
-      <NavLink to="/contactus" className="headerLink">
+      <NavLink to="/contact" className="headerLink">
         Contact
       </NavLink>
-      <NavLink to="/" onClick={handleLogout} className="headerLink">
+      <NavLink to="/logout" className="headerLink">
         Logout
       </NavLink>
     </div>

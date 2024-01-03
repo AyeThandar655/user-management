@@ -4,6 +4,7 @@ import { ResetPasswordApi } from "../../API/api";
 import "./resetpassword.css";
 import { RiEyeFill, RiEyeOffFill } from "react-icons/ri";
 import Alert from "../../components/alert";
+import $ from "jquery";
 
 const ResetPassword = () => {
 
@@ -11,17 +12,21 @@ const ResetPassword = () => {
     const [confirm_password, setConfirmPassword] = useState("")
     const [new_passwordError, setNewPasswordError] = useState("")
     const [confirm_passwordError, setConfirmPasswordError] = useState("")
-    const location = useLocation();
-    const email = location.state?.email || "";
+    const [passwordError, setPasswordError] = useState("")
 
     const navigate = useNavigate();
+
+    const [alertMessage, setAlertMessage] = useState("")
+    const [alertType, setAlertType] = useState("")
+    const [isShow, setIsShow] = useState(false);
+
+    const search = useLocation().search;
+    const reset_token = new URLSearchParams(search).get("token");
 
     const [showNewPassword, setShowNewPassword] = useState(false);
     const type = showNewPassword ? "text" : "password";
     const icon = showNewPassword ? <RiEyeOffFill /> : <RiEyeFill />;
-    const [alertMessage, setAlertMessage] = useState("")
-    const [alertType, setAlertType] = useState("")
-    const [isShow, setIsShow] = useState(false);
+
 
     const handleToggle = () => {
         setShowNewPassword((prevShowPassword) => !prevShowPassword);
@@ -35,15 +40,27 @@ const ResetPassword = () => {
         setShowConfirmPassword((prevShowPassword) => !prevShowPassword);
     }
 
+    $("#confirm_password").on("keyup", function () {
+        if (new_password !== confirm_password) {
+            setPasswordError(true);
+        } else {
+            setPasswordError(false);
+        }
+    });
+
     const resetPassword = () => {
-        ResetPasswordApi({ _data: { email: email, new_password: new_password, confirm_password: confirm_password } })
+        
+        ResetPasswordApi({ _data: { reset_token: reset_token, new_password: new_password } })
             .then((response) => {
+                console.log("response....", response);
                 if (response.success) {
                     navigate('/');
                 } else {
                     setAlertType("error")
                     setAlertMessage(response.message);
                     setIsShow(true);
+                    setNewPassword("");
+                    setConfirmPassword("");
                 }
             })
             .catch((error) => {
@@ -52,11 +69,9 @@ const ResetPassword = () => {
     }
 
     const onButtonClick = () => {
-        // Set initial error values to empty
         setNewPasswordError("")
         setConfirmPasswordError("")
 
-        // Check if the user has entered both fields correctly
         if ("" === new_password) {
             setNewPasswordError("Please enter your new password")
             return
@@ -64,6 +79,11 @@ const ResetPassword = () => {
 
         if ("" === confirm_password) {
             setConfirmPasswordError("Please enter your confirm password")
+            return
+        }
+
+        if (new_password !== confirm_password) {
+            setPasswordError("Your password does not match!")
             return
         }
 
@@ -114,6 +134,7 @@ const ResetPassword = () => {
                         {confirmpasswordicon}
                     </span>
                     <label className="errorLabel">{confirm_passwordError}</label>
+                    <label className="errorLabel">{passwordError}</label>
                 </div>
                 <br />
                 <div className="inputResetContainer">

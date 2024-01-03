@@ -7,7 +7,7 @@ function Footer() {
     <div className="top-footer">
       <div className="container">
         <div className="row">
-          <div className="col-md-4 footermenu">
+          <div className="col-md-6 footermenu">
             <aside className="contact-info-widget">
               <h3 className="bottom-widget-title">Contact Info</h3>
               <div className="contact-info-content">
@@ -34,20 +34,7 @@ function Footer() {
               </div>
             </aside>
           </div>
-          <div className="col-md-4 footermenu">
-            <aside className="company-widget">
-              <h3 className="bottom-widget-title">Our Company</h3>
-              <div className="company-content">
-                <p>
-                  <a href="/aboutus">About Us</a>
-                </p>
-                <p>
-                  <a href="/contactus">Contact Us</a>
-                </p>
-              </div>
-            </aside>
-          </div>
-          <div className="col-md-4 footermenu">
+          <div className="col-md-6 footermenu">
             <aside className="openHour-widget">
               <h3 className="bottom-widget-title">Open Hours</h3>
               <div className="openHour-content">

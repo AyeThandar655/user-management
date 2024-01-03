@@ -88,7 +88,7 @@ const ChangePassword = ({ setIsLoggedIn }) => {
         }
 
         if (newPassword !== confirmNewPassword) {
-            setPasswordError("Your password does not match !");
+            setPasswordError("Your password does not match!");
             return
         }
 

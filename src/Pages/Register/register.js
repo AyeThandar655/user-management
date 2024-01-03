@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef, Fragment } from "react"
-import { DepartmentApi, PositionApi, RoleDataApi, CreateUsersApi } from "../../API/api";
+import { DepartmentApi, RoleDataApi, CreateUsersApi } from "../../API/api";
 import "./register.css";
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
@@ -30,11 +30,9 @@ const Register = () => {
 
     const [roles, setRoles] = useState([]);
     const [departments, setDepartments] = useState([]);
-    const [positions, setPositions] = useState([]);
 
     const [first_name, setFirstName] = useState("");
     const [last_name, setLastName] = useState("");
-    const [surn_name, setSurnName] = useState("");
     const [email, setEmail] = useState("");
     const [birth_day, setBirthDay] = useState("");
     const [birth_month, setBirthMonth] = useState("");
@@ -44,7 +42,6 @@ const Register = () => {
     const [confirm_password, setConfirmPassword] = useState("");
     const [role_id, setRoleId] = useState(0);
     const [department_id, setDepartmentId] = useState(0);
-    const [position_id, setPositionId] = useState(0);
     const [create_date, setCreateDate] = useState(new Date());
 
     const [showPassword, setShowPassword] = useState(false);
@@ -89,19 +86,6 @@ const Register = () => {
                 console.log("error", error);
             });
 
-
-        PositionApi()
-            .then((response) => {
-                if (response.success) {
-                    if (response.position_data.length > 0) {
-                        const sortedPositionData = [...response.position_data].sort((a, b) => a.position_id - b.position_id);
-                        setPositions(sortedPositionData);
-                    }
-                }
-            })
-            .catch((error) => {
-                console.log("error", error);
-            });
     }, [])
 
     const _onBirthDaySelect = (selectedOption) => {
@@ -129,9 +113,6 @@ const Register = () => {
         setDepartmentId(e.target.value);
     };
 
-    const handlePositionSelectChange = (e) => {
-        setPositionId(e.target.value);
-    };
 
     $("#confirm_password").on("keyup", function () {
         if (password !== confirm_password) {
@@ -145,7 +126,6 @@ const Register = () => {
         if (
             first_name &&
             last_name &&
-            surn_name &&
             email &&
             birth_day &&
             birth_month &&
@@ -155,7 +135,6 @@ const Register = () => {
             confirm_password &&
             role_id &&
             department_id &&
-            position_id &&
             create_date
         ) {
             if (!passwordError) {
@@ -180,22 +159,25 @@ const Register = () => {
                 CreateUsersApi({
                     first_name: first_name,
                     last_name: last_name,
-                    surn_name: surn_name,
                     email: email,
                     birth_day: birth_day,
                     birth_month: birth_month,
                     birth_year: birth_year,
                     phone_number: phone_number,
                     password: password,
-                    confirm_password: confirm_password,
                     role_id: parseInt(role_id),
                     department_id: parseInt(department_id),
-                    position_id: parseInt(position_id),
                     create_date: Moment(create_date, 'YYYY-MM-DD')
                 })
                     .then((response) => {
                         if (response.success) {
                             navigate('/home', { state: { create_user: true } });
+                        }
+                        else{
+                            setAlertMessage(response.message);
+                            setAlertType("warning")
+                            setIsShow(true);
+                            setEmail("");
                         }
                     })
                     .catch((error) => {
@@ -248,23 +230,6 @@ const Register = () => {
                     </div>
                     <div className="row">
                         <div className="form-group-register col-md-6">
-                            <label htmlFor="surn_name" className="register-label">Surn Name <label className="star-css"> * </label> </label>
-                            <input
-                                type="text"
-                                id="surn_name"
-                                name="surn_name"
-                                value={surn_name}
-                                onChange={(ev) => setSurnName(ev.target.value)}
-                                className="registerInputBox"
-                            />
-                            {inputError && !surn_name && (
-                                <label className="errorLabel">
-                                    This field is required !
-                                </label>
-                            )}
-                        </div>
-
-                        <div className="form-group-register col-md-6">
                             <label htmlFor="email" className="register-label">Email <label className="star-css"> * </label> </label>
                             <input
                                 type="text"
@@ -280,8 +245,6 @@ const Register = () => {
                                 </label>
                             )}
                         </div>
-                    </div>
-                    <div className="row">
                         <div className="form-group-register col-md-6">
                             <label htmlFor="birth_day" className="register-label">Birth Day <label className="star-css"> * </label> </label>
                             <Dropdown id="birth_day" options={birthday_options} onChange={_onBirthDaySelect}
@@ -292,7 +255,8 @@ const Register = () => {
                                 </label>
                             )}
                         </div>
-
+                    </div>
+                    <div className="row">
                         <div className="form-group-register col-md-6">
                             <label htmlFor="birth_month" className="register-label">Birth Month <label className="star-css"> * </label></label>
                             <Dropdown id="birth_month" options={birthmonth_options} onChange={_onBirthMonthSelect}
@@ -303,8 +267,6 @@ const Register = () => {
                                 </label>
                             )}
                         </div>
-                    </div>
-                    <div className="row">
                         <div className="form-group-register col-md-6">
                             <label htmlFor="birth_year" className="register-label">Year of birth <label className="star-css"> * </label> </label>
                             <input
@@ -316,23 +278,6 @@ const Register = () => {
                                 className="registerInputBox"
                             />
                             {inputError && !birth_year && (
-                                <label className="errorLabel">
-                                    This field is required !
-                                </label>
-                            )}
-                        </div>
-
-                        <div className="form-group-register col-md-6">
-                            <label htmlFor="phone_number" className="register-label">Mobile Number <label className="star-css"> * </label></label>
-                            <input
-                                type="text"
-                                id="phone_number"
-                                name="phone_number"
-                                value={phone_number}
-                                onChange={(ev) => setPhoneNumber(ev.target.value)}
-                                className="registerInputBox"
-                            />
-                            {inputError && !phone_number && (
                                 <label className="errorLabel">
                                     This field is required !
                                 </label>
@@ -361,7 +306,6 @@ const Register = () => {
                                 </label>
                             )}
                         </div>
-
                         <div className="form-group-register col-md-6 relative-register">
                             <label htmlFor="confirm_password" className="register-label">Confirm Password <label className="star-css"> * </label></label>
                             <input
@@ -385,6 +329,46 @@ const Register = () => {
                             {passwordError && password !== confirm_password && (
                                 <label className="errorLabel">
                                     Password does not match !
+                                </label>
+                            )}
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="form-group-register col-md-6">
+                            <label htmlFor="phone_number" className="register-label">Mobile Number <label className="star-css"> * </label></label>
+                            <input
+                                type="text"
+                                id="phone_number"
+                                name="phone_number"
+                                value={phone_number}
+                                onChange={(ev) => setPhoneNumber(ev.target.value)}
+                                className="registerInputBox"
+                            />
+                            {inputError && !phone_number && (
+                                <label className="errorLabel">
+                                    This field is required !
+                                </label>
+                            )}
+                        </div>
+                        <div className="form-group-register col-md-6">
+                            <label htmlFor="createdate" className="register-label">Create Date <label className="star-css"> * </label></label>
+                            <DatePicker
+                                id="createdate"
+                                name="createdate"
+                                selected={create_date}
+                                minDate={new Date()}
+                                value={create_date}
+                                onChange={(createDate) =>
+                                    setCreateDate(createDate)
+                                }
+                                onKeyDown={(e) => {
+                                    e.preventDefault();
+                                }}
+                                className="registerInputBox"
+                            />
+                            {inputError && !create_date && (
+                                <label className="errorLabel">
+                                    This field is required !
                                 </label>
                             )}
                         </div>
@@ -430,53 +414,6 @@ const Register = () => {
                                 ))}
                             </select>
                             {inputError && !department_id && (
-                                <label className="errorLabel">
-                                    This field is required !
-                                </label>
-                            )}
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="form-group-register col-md-6">
-                            <label htmlFor="position" className="register-label">Position <label className="star-css"> * </label></label>
-                            <select
-                                id="position"
-                                name="position_id"
-                                value={position_id}
-                                onChange={handlePositionSelectChange}
-                                className="select-css-register"
-                            >
-                                <option value="">Select Position</option>
-                                {positions.map((position) => (
-                                    <option key={position.position_id} value={position.position_id}>
-                                        {position.position_name}
-                                    </option>
-                                ))}
-                            </select>
-                            {inputError && !position_id && (
-                                <label className="errorLabel">
-                                    This field is required !
-                                </label>
-                            )}
-                        </div>
-
-                        <div className="form-group-register col-md-6">
-                            <label htmlFor="createdate" className="register-label">Create Date <label className="star-css"> * </label></label>
-                            <DatePicker
-                                id="createdate"
-                                name="createdate"
-                                selected={create_date}
-                                minDate={new Date()}
-                                value={create_date}
-                                onChange={(createDate) =>
-                                    setCreateDate(createDate)
-                                }
-                                onKeyDown={(e) => {
-                                    e.preventDefault();
-                                }}
-                                className="registerInputBox"
-                            />
-                            {inputError && !create_date && (
                                 <label className="errorLabel">
                                     This field is required !
                                 </label>

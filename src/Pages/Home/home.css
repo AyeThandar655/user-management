@@ -91,7 +91,7 @@
 
 .edit-user-modal-container {
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   left: 0;
   top: 0;
   width: 100%;
@@ -106,7 +106,7 @@
   border-radius: 4px;
   padding: 2rem;
   background-color: white;
-  width: 40em;
+  width: 43em;
 }
 
 .editUserModalTitle {
@@ -124,7 +124,7 @@
   font-size: 18px !important;
   border-radius: 4px;
   cursor: pointer;
-  margin-top: 20px;
+  margin-top: 45px;
 }
 
 .form-group-home {
@@ -199,4 +199,20 @@
   font-size: 17px !important;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+.relative-home {
+  position: relative;
+  height: 43px;
+}
+
+.eye-icon-home,
+  .eye-icon-cp-home {
+    position: absolute;
+    top: 110%;
+    right: 25px; 
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 20px;
+    z-index: 1; 
 }
